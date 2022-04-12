@@ -1,5 +1,6 @@
 import sys
 import socket
+import time
 
 # Classe responsavel por implementar o cliente
 class Client():
@@ -12,10 +13,12 @@ class Client():
     # Metodo responsavel por enviar a requisicao
     def send_request(self):
         # Envia requisicao
-        self.socket.sendall(b"Hello, world")
+        data = "Hello, world"
+        #print (data)
+        self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
-        print(data)
+        print(data.decode())
 
 if __name__ == '__main__':
 
@@ -25,5 +28,8 @@ if __name__ == '__main__':
 
     host = sys.argv[1]
     port = int(sys.argv[2])
-    client = Client(host, port)
+    #descomente para fazer um cliente que manda mensagens regularmente
+    #while True:
+    client = Client(host, 34565)
     client.send_request()
+    #time.sleep(3)
