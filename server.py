@@ -1,5 +1,6 @@
 import sys
 import socket
+import random
 
 # Classe responsavel por implementar o servidor
 class Server():
@@ -15,26 +16,27 @@ class Server():
     def wait_request(self):
         print(self.server)
         # Indica ao SO que eh o servidor
-        self.socket.listen(1)
         while True:
+            self.socket.listen(1)
             # Indica que o socket esta aceitando conexoes
             client, addr = self.socket.accept()
             print(f"Connected by {addr}")
             option = client.recv(1024)
-
-            client.sendall(option)
+            temperature = random.randint(int(sys.argv[4]),int(sys.argv[5]))
+            exit = str(temperature)
+            client.sendall(exit.encode())
 
             client.close()
 
 if __name__ == '__main__':
 
-    if len(sys.argv) != 4:
-        print (f'Uso correto: {sys.argv[0]} <nome servidor> <host> <porta>')
+    if len(sys.argv) != 6:
+        print (f'Uso correto: {sys.argv[0]} <nome servidor> <host> <porta> <temperatura1> <temperatura2>')
         sys.exit(1)
 
     server_name = sys.argv[1]
     host = sys.argv[2]
     port = int(sys.argv[3])
     server = Server(server_name, host, port)
-    server.temperature_server()
+    #server.temperature_server()
     server.wait_request()
