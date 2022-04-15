@@ -19,7 +19,7 @@ class Client():
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
         print(data.decode())
-        return data
+        return data.decode()
 
 if __name__ == '__main__':
 
