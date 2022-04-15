@@ -3,44 +3,8 @@ import socket
 import time
 import json
 from datetime import datetime, timedelta
-
-# Classe responsavel por implementar o cliente
-class Client():
-    def __init__(self, host, port):
-        # Cria um socket TCP/IP
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # Estabelece conexao
-        self.connection = self.socket.connect((host, port))
-
-    # Metodo responsavel por enviar a requisicao
-    def send_request(self):
-        # Envia requisicao
-        data = "Hello, world"
-        #print (data)
-        self.socket.sendall(data.encode())
-        # Aguarda recebimento dos dados
-        data = self.socket.recv(1024)
-        print(data.decode())
-        return data.decode()
-
-class Cache():
-    def __init__(self):
-        self.cache_table = {"alaska":{}, "saara":{}, "antartida":{}}
-
-    def add_data_cache(self, chave, temperature):
-        timeout = self.set_timeout()
-        self.cache_table[chave].update({"temperature": temperature})#, "timeout": timeout})
-        return timeout
-
-    def set_timeout(self):
-        timeout = 30
-        return datetime.now() + timedelta(seconds=timeout)
-
-    def check_timeout(self, timeout):
-        if timeout < datetime.now():
-            return True
-        else:
-            return False
+from cache import Cache
+from client import Client
 
 class Server():
     def __init__(self, server, host, port):
@@ -93,17 +57,23 @@ class Server():
                 try:
                     client = Client(host, 34565)
                     tempo1 = cache.add_data_cache("alaska",client.send_request())
-                print(cache.cache_table)   
+                    print(cache.cache_table)
+                except:
+                    print(cache.cache_table)       
             if cache.check_timeout(tempo2):
                 try:
                     client = Client(host, 34566)
                     tempo2 = cache.add_data_cache("saara",client.send_request())
-                print(cache.cache_table)    
+                    print(cache.cache_table) 
+                except: 
+                    print(cache.cache_table)  
             if cache.check_timeout(tempo3):
                 try:
                     client = Client(host, 34567)
                     tempo3 = cache.add_data_cache("antartida",client.send_request())
-                print(cache.cache_table) 
+                    print(cache.cache_table)
+                except:
+                    print(cache.cache_table) 
             data = json.dumps(cache.cache_table).encode()    
             mapa.sendall(data)
 
