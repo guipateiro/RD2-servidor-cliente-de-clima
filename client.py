@@ -19,6 +19,7 @@ class Client():
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
         print(data.decode())
+        return data
 
 if __name__ == '__main__':
 
@@ -30,6 +31,9 @@ if __name__ == '__main__':
     port = int(sys.argv[2])
     #descomente para fazer um cliente que manda mensagens regularmente
     #while True:
-    client = Client(host, 34565)
-    client.send_request()
+    try:
+        client = Client(host, port)
+        client.send_request()
+    except:
+        print("erro ao receber pacote ou se conectar com " + host + ":" + str(port))    
     #time.sleep(3)
