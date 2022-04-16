@@ -1,6 +1,7 @@
 import sys
 import socket
 import time
+import json
 
 # Classe responsavel por implementar o cliente
 class Client():
@@ -18,8 +19,22 @@ class Client():
         self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
-        print(data.decode())
-        return data.decode()
+        tabela = json.loads(data)
+        return tabela
+
+    # Metodo responsavel por enviar a requisicao
+    def send_request_raw(self):
+        # Envia requisicao
+        data = "Hello, world"
+        #print (data)
+        self.socket.sendall(data.encode())
+        # Aguarda recebimento dos dados
+        data = self.socket.recv(1024)
+        return data.decode()    
+
+    def fechar(self):
+            self.socket.shutdown(socket.SHUT_RDWR)
+            self.socket.close()    
 
 if __name__ == '__main__':
 
@@ -29,11 +44,59 @@ if __name__ == '__main__':
 
     host = sys.argv[1]
     port = int(sys.argv[2])
-    #descomente para fazer um cliente que manda mensagens regularmente
-    #while True:
+    palavra = input('>>')
+    tabela = {}
     try:
-        client = Client(host, port)
-        client.send_request()
-    except:
-        print("erro ao receber pacote ou se conectar com " + host + ":" + str(port))    
-    #time.sleep(3)
+        while (palavra != "sair"):
+
+            if (palavra == "get") or (palavra == "connect") or (palavra == "cache"):
+                try:
+                    client = Client(host, port)
+                    tabela = client.send_request()
+                    print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
+                    i = 1 
+                    for x in tabela:
+                        print("{:<8} {:<15} {:<10}".format(i,x,tabela[x]["temperatura"]))    
+                        i = i + 1   
+                except:
+                    print("erro ao receber pacote ou se conectar com " + host + ":" + str(port))
+                    sys.exit(1)
+
+                palavra = input('>>') 
+
+            elif (palavra == "tabela") or (palavra == "imprime") or (palavra == "print"):
+                print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
+                i = 1 
+                for x in tabela:
+                    print("{:<8} {:<15} {:<10}".format(i,x,tabela[x]["temperatura"]))    
+                    i = i + 1   
+                palavra = input('>>') 
+
+            elif (palavra == "info") or (palavra == "creditos"):
+                print("os creditos ficam aqui :)")
+                palavra = input('>>') 
+
+            elif (palavra == "ajuda") or (palavra == "help"):
+                print("comandos:")
+                print("----------------------------------------------------------------------------------------------")
+                print("{:<30} {:<15}".format("get, connect, cache","faz um pedido para o servidor e imprime a tabela recebida"))
+                print("{:<30} {:<15}".format("tabela, imprime,print","imprime a tabela LOCAL"))
+                print("{:<30} {:<15}".format("info, creditos","mostra os creditos, os membros do grupo"))
+                print("{:<30} {:<15}".format("help, ajuda","mostra essa tela")) 
+                print("{:<30} {:<15}".format("sair","finaliza o programa"))
+                print("----------------------------------------------------------------------------------------------")
+                palavra = input('>>')  
+            else:
+                print("comando desconhecido 'ajuda' para lista de comandos")
+                palavra = input('>>')
+        try:        
+            client.fechar()
+        except: 
+            sys.exit(1)    
+    except KeyboardInterrupt:
+        try:
+            client.fechar()
+        except:
+            pass
+        finally:       
+            print ("finalizado com sucesso")                                
