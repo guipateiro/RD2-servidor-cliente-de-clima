@@ -1,8 +1,7 @@
-#   feito por:
-#   
-#
-#
-#   data da ultima modoficação 
+"""
+    Autores: Cristiano C. Mendieta e Guilherme Pateiro
+    Última modificação: 16/04/2022
+"""
 import sys
 import socket
 import random
@@ -32,11 +31,12 @@ class Server():
             #pega o pacote do cliente
             cliente.recv(1024)
             #pega os dados da internet do local informado
-            temperatura = self.pegadados(local)
+            temperatura = self.pega_dados(local)
             # prepara e envia temperatura para o cliente
             cliente.sendall(temperatura.encode())
             cliente.close()
 
+    # Metodo responsavel por fechar a conexao do socket
     def fechar(self):
         self.socket.shutdown(socket.SHUT_RDWR)
         self.socket.close()
@@ -44,7 +44,8 @@ class Server():
         log.write(f"{nome_servidor} finalizado com sucesso\n\n")
         log.write('----------------------------------\n\n')   
 
-    def pegadados(self,local):
+    # Metodo responsavel por fazer o scrapping de dados das temperaturas
+    def pega_dados(self,local):
         # pega o url baseado no nome do lugar que foi inserido
         if (local == "antartida"):
             url = "https://www.tempo.com/estacao-polo-sul-amundsen-scott.htm"

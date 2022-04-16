@@ -1,3 +1,8 @@
+"""
+    Autores: Cristiano C. Mendieta e Guilherme Pateiro
+    Última modificação: 16/04/2022
+"""
+
 import sys
 import socket
 import time
@@ -12,8 +17,8 @@ class Client():
         # Estabelece conexao
         self.connection = self.socket.connect((host, port))
 
-    # Metodo responsavel por enviar a requisicao
-    def send_request(self):
+    # Metodo responsavel por enviar a requisicao e retorna os dados da tabela cache
+    def envia_requisicao_formatado(self):
         self.log.write(f'Envia requisicao\n')
         # Envia requisicao
         data = "Hello, world"
@@ -26,7 +31,7 @@ class Client():
         return tabela
 
     # Metodo responsavel por enviar a requisicao
-    def send_request_raw(self):
+    def envia_requisicao(self):
         self.log.write(f'Envia requisicao\n')
         # Envia requisicao
         data = "Hello, world"
@@ -55,7 +60,7 @@ if __name__ == '__main__':
 
     host = sys.argv[1]
     port = int(sys.argv[2])
-    palavra = input('>>')
+    palavra = 'help'
     tabela = {}
     try:
         while (palavra != "sair"):
@@ -64,7 +69,7 @@ if __name__ == '__main__':
                 try:
                     log.write(f"comando {palavra} recebido\n")
                     client = Client(log, host, port)
-                    tabela = client.send_request()
+                    tabela = client.envia_requisicao_formatado()
                     print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
                     i = 1 
                     for x in tabela:

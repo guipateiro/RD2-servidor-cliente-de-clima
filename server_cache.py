@@ -1,3 +1,8 @@
+"""
+    Autores: Cristiano C. Mendieta e Guilherme Pateiro
+    Última modificação: 16/04/2022
+"""
+
 import sys
 import socket
 import json
@@ -15,7 +20,6 @@ class ServerCache():
          
     # Metodo responsavel por aguardar a requisicao de um cliente
     def aguarda_requisicao(self):
-        
         self.log.write(f"{self.servidor} aguardando requisicao\n\n")
         # Indica ao SO que eh o servidor
         cache = Cache(self.log)
@@ -30,6 +34,7 @@ class ServerCache():
             localizacao.sendall(data)
             localizacao.close()
 
+    # Metodo responsavel por fechar a conexao do socket
     def fechar(self):
         self.socket.shutdown(socket.SHUT_RDWR)
         self.socket.close()

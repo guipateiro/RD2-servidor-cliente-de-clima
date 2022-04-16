@@ -37,9 +37,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
             <p>def __init__(self, log, host, port) - Método construtor, responsável por definir os atributos da classe, passamos como parâmetros para a construção da
             classe o arquivo de escrita do log, host e a porta onde estamos executando o cliente;</p>
 
-            <p>def send_request(self) - envia a requisição para o intermediário que detém os dados de interesse e retorna os dados da tabela cache</p>
+            <p>def envia_requisicao_formatado(self) - envia a requisição para o intermediário que detém os dados de interesse e retorna os dados da tabela cache</p>
 
-            <p>def send_request_raw(self) - envia a requisição para um servidor e retorna sua resposta</p>
+            <p>def envia_requisicao(self) - envia a requisição para um servidor e retorna sua resposta</p>
 
             <p>def fechar(self) - fecha a conexão do socket</p>
 
@@ -59,20 +59,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         </p>
         <p>def aguarda_requisicao(self,local) - método responsável por aguardar alguma requisição feita ao servidor e retornar a temperatura do local solicitado</p>
         <p>def fechar(self) - fecha a conexão do socket</p>
-        <p>def pegadados(self,local) - método responsável por fazer o scrapping de dados de acordo com a região do servidor, retorna a temperatura do local</p>
+        <p>def pega_dados(self,local) - método responsável por fazer o scrapping de dados de acordo com a região do servidor, retorna a temperatura do local</p>
     </div>
 
     <h2>Cache</h2>
     <div>
-        <p>Código implemntado em cache.py</p>
+        <p>Código implementado em cache.py</p>
         <p>Responsável por implemntar a tabela cache do sistema, armazenando os dados das temperaturas provenientes dos servidores e atribuindo um timeout para esses dados</p>
     </div>
     <h3>Métodos</h3>
     <div>
         <p>def __init__(self) - método construtor, inicializa a tabela cache e os timeouts</p>
-        <p>def add_data_cache(self, chave, temperature) - método responsável por adicionar dados na tabela</p>
-        <p>def set_timeout(self) - define o timeout, com base no horário atual</p>
-        <p>def check_timeout(self, timeout) - checa se os dados da tabela expiraram</p>
+        <p>def adiciona_dados(self, chave, temperature) - método responsável por adicionar dados na tabela</p>
+        <p>def seta_timeout(self) - define o timeout, com base no horário atual</p>
+        <p>def checa_timeout(self, timeout) - checa se os dados da tabela expiraram</p>
         <p>def inicia(self, host) - método responsável por fazer as requisições para popular a tabela cache inicialmente</p>
         <p>def atualiza(self, host) - método responsável por atualizar a tabela cache com os valores recebidos das requisições feitas aos servidores</p>
 
