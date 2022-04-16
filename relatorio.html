@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Trabalho Redes II</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+</head>
+<body>
+
+    <h1>Relatório</h1>
+    <div>
+        <p>Neste trabalho foi implementado um sistema client-servidor com um intermediário que utiliza-se de tabela cache para armazenar os dados obtidos através
+            das requisições feitas pelo cliente, visando menos interações entre o cliente e os servidores em questão.
+        </p>
+        <p>
+            Optamos por utilizar a linguagem python para o desenvolvimento do trabalho e também por utilizar o protocolo TCP/IP.
+        </p>
+    </div>
+
+    <h2>Cliente</h2>
+    <div>
+        <p>
+            O cliente do sistema está implementado em client.py e pode ser executado com a seguinte linha de comando: python client.py <host> <port>, então uma
+            interface simples estará disponível com os comandos possíveis para execução. Como pode ser visto na figura abaixo.
+        </p>
+        <h3>Métodos</h3>
+        <div>
+            <p>def __init__(self, log, host, port) - Método construtor, responsável por definir os atributos da classe, passamos como parâmetros para a construção da
+            classe o arquivo de escrita do log, host e a porta onde estamos executando o cliente;</p>
+
+            <p>def send_request(self) - envia a requisição para o intermediário que detém os dados de interesse e retorna os dados da tabela cache</p>
+
+            <p>def send_request_raw(self) - envia a requisição para um servidor e retorna sua resposta</p>
+
+            <p>def fechar(self) - fecha a conexão do socket</p>
+
+        </div>
+    </div>
+
+    <h2>Servidor</h2>
+    <div>
+        <p>O código responsável pelo servidor do sistema encontra-se em server.py</p>
+        <p>O servidor tem a responsabilidade de receber uma requisição proveniente do intermediário do sistema e devolver a resposta para aquela requisição</p>
+        <p>Deve ser executado através do comando: python server.py <nome do servidor> <host></p>
+    </div>
+    <h3>Métodos</h3>
+    <div>
+        <p>def __init__(self, servidor, log, host, port) - método construtor, onde passamos como parâmetros para a classe o nome do servidor, o arquivo onde será
+            escrito o log do servidor, o host e a porta;
+        </p>
+        <p>def aguarda_requisicao(self,local) - método responsável por aguardar alguma requisição feita ao servidor e retornar a temperatura do local solicitado</p>
+        <p>def fechar(self) - fecha a conexão do socket</p>
+        <p>def pegadados(self,local) - método responsável por fazer o scrapping de dados de acordo com a região do servidor, retorna a temperatura do local</p>
+    </div>
+
+    <h2>Cache</h2>
+    <div>
+        <p>Código implemntado em cache.py</p>
+        <p>Responsável por implemntar a tabela cache do sistema, armazenando os dados das temperaturas provenientes dos servidores e atribuindo um timeout para esses dados</p>
+    </div>
+    <h3>Métodos</h3>
+    <div>
+        <p>def __init__(self) - método construtor, inicializa a tabela cache e os timeouts</p>
+        <p>def add_data_cache(self, chave, temperature) - método responsável por adicionar dados na tabela</p>
+        <p>def set_timeout(self) - define o timeout, com base no horário atual</p>
+        <p>def check_timeout(self, timeout) - checa se os dados da tabela expiraram</p>
+        <p>def inicia(self, host) - método responsável por fazer as requisições para popular a tabela cache inicialmente</p>
+        <p>def atualiza(self, host) - método responsável por atualizar a tabela cache com os valores recebidos das requisições feitas aos servidores</p>
+
+    </div>
+
+    <h2>Servidor intermediário com tabela cache</h2>
+    <div>
+        <p>Implementado em server_cache.py, é responsável por receber a requisição do cliente, verificar se os dados na memória cache expiraram, se sim, envia
+            requisição para os 3 servidores, adiciona os novos dados na memória cache e retorna os dados, caso contrário, somente retorna os dados armazenados na tabela;
+        </p>
+        <p>Basicamente a mesma implementação do servidor, porém com uma instância da classe cache para armazenar os dados de interesse</p>
+    </div>
+</body>
+</html>
