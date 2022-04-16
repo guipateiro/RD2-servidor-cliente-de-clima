@@ -6,6 +6,10 @@ Inicio de execucao servidor antartida
 
 antartida aguardando requisicao...
 
+Connected by ('10.0.2.15', 45166)
+-54°C
+Connected by ('10.0.2.15', 45184)
+-54°C
 ----------------------------------
 
 antartida finalizado com sucesso
