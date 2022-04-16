@@ -26,7 +26,6 @@ class Client():
     def send_request_raw(self):
         # Envia requisicao
         data = "Hello, world"
-        #print (data)
         self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
