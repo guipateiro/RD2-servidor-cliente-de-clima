@@ -1,0 +1,7 @@
+----------------------------------
+
+Inicio de execucao cliente
+
+----------------------------------
+
+Envia requisicao

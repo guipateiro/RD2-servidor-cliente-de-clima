@@ -5,7 +5,8 @@ import json
 
 # Classe responsavel por implementar o cliente
 class Client():
-    def __init__(self, host, port):
+    def __init__(self, log, host, port):
+        self.log = log
         # Cria um socket TCP/IP
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Estabelece conexao
@@ -13,9 +14,9 @@ class Client():
 
     # Metodo responsavel por enviar a requisicao
     def send_request(self):
+        self.log.write('Envia requisicao\n')
         # Envia requisicao
         data = "Hello, world"
-        #print (data)
         self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
@@ -24,6 +25,7 @@ class Client():
 
     # Metodo responsavel por enviar a requisicao
     def send_request_raw(self):
+
         # Envia requisicao
         data = "Hello, world"
         self.socket.sendall(data.encode())
@@ -33,13 +35,20 @@ class Client():
 
     def fechar(self):
             self.socket.shutdown(socket.SHUT_RDWR)
-            self.socket.close()    
+            self.socket.close()
+            self.log.write('cliente finalizado\n')
 
 if __name__ == '__main__':
 
     if len(sys.argv) != 3:
         print (f'Uso correto: {sys.argv[0]} <host> <porta>')
         sys.exit(1)
+
+    log_file = 'logs/client_log.txt'
+    log = open(log_file, 'w')
+    log.write('----------------------------------\n\n')
+    log.write(f"Inicio de execucao cliente\n\n")
+    log.write('----------------------------------\n\n')
 
     host = sys.argv[1]
     port = int(sys.argv[2])
@@ -50,7 +59,7 @@ if __name__ == '__main__':
 
             if (palavra == "get") or (palavra == "connect") or (palavra == "cache"):
                 try:
-                    client = Client(host, port)
+                    client = Client(log, host, port)
                     tabela = client.send_request()
                     print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
                     i = 1 
@@ -100,4 +109,4 @@ if __name__ == '__main__':
         except:
             pass
         finally:       
-            print ("finalizado com sucesso")                                
+            print("finalizado com sucesso")                                

@@ -1,0 +1,8 @@
+----------------------------------
+
+Inicio de execucao servidor dubai
+
+----------------------------------
+
+dubai aguardando requisicao...
+dubai finalizado com sucesso

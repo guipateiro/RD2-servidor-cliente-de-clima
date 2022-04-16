@@ -1,0 +1,14 @@
+----------------------------------
+
+Inicio de execucao servidor antartida
+
+----------------------------------
+
+----------------------------------
+
+Inicio de execucao servidor antartida
+
+----------------------------------
+
+antartida aguardando requisicao...
+antartida finalizado com sucesso

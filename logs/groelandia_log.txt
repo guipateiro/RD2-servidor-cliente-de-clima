@@ -1,0 +1,8 @@
+----------------------------------
+
+Inicio de execucao servidor groelandia
+
+----------------------------------
+
+groelandia aguardando requisicao...
+groelandia finalizado com sucesso
