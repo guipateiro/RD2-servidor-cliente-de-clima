@@ -28,7 +28,7 @@ class Server():
             self.socket.listen(1)
             # Indica que o socket esta aceitando conexoes
             cliente, addr = self.socket.accept()
-            self.log.write(f"Connected by {addr}\n")
+            self.log.write(f"\nConnected by {addr}\n")
             #pega o pacote do cliente
             cliente.recv(1024)
             #pega os dados da internet do local informado
@@ -40,7 +40,9 @@ class Server():
     def fechar(self):
         self.socket.shutdown(socket.SHUT_RDWR)
         self.socket.close()
-        self.log.write (f"{self.servidor} finalizado com sucesso\n")    
+        log.write('\n----------------------------------\n\n')
+        log.write(f"{nome_servidor} finalizado com sucesso\n\n")
+        log.write('----------------------------------\n\n')   
 
     def pegadados(self,local):
         # pega o url baseado no nome do lugar que foi inserido
@@ -97,3 +99,4 @@ if __name__ == '__main__':
         server.aguarda_requisicao(nome_servidor)
     except KeyboardInterrupt:
         server.fechar()    
+    
