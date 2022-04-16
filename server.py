@@ -73,6 +73,10 @@ if __name__ == '__main__':
         server_name = sys.argv[1]
         host = sys.argv[2]
         port = Dns.name_to_port(sys.argv[1])
+        if( port == -1):
+            print("nome do servidor invalido")
+            print("nomes validos: groelandia, dubai, antartida")
+            sys.exit(1)
         server = Server(server_name, host, port)
         server.wait_request(sys.argv[1])
     except KeyboardInterrupt:
