@@ -16,15 +16,15 @@ class ServerCache():
     # Metodo responsavel por aguardar a requisicao de um cliente
     def aguarda_requisicao(self):
         
-        self.log.write(f"{self.servidor} aguardando requisicao\n")
+        self.log.write(f"{self.servidor} aguardando requisicao\n\n")
         # Indica ao SO que eh o servidor
-        cache = Cache()
+        cache = Cache(self.log)
         cache.inicia(host)         
         while True:
             self.socket.listen(1)
             # Indica que o socket esta aceitando conexoes
             localizacao, endereco = self.socket.accept()
-            self.log.write(f"Conectado por {endereco}\n")
+            self.log.write(f"Conectado por {endereco}\n\n")
             cache.atualiza(host) 
             data = json.dumps(cache.cache_table).encode()    
             localizacao.sendall(data)
@@ -33,7 +33,9 @@ class ServerCache():
     def fechar(self):
         self.socket.shutdown(socket.SHUT_RDWR)
         self.socket.close()
-        self.log.write(f"{self.servidor}finalizado com sucesso\n")          
+        log.write('----------------------------------\n\n')
+        log.write(f"{self.servidor} finalizado com sucesso\n\n")
+        log.write('----------------------------------\n\n')        
       
 if __name__ == '__main__':
     try:
@@ -49,7 +51,7 @@ if __name__ == '__main__':
         log.write('Inicio de execucao servidor cache\n\n')
         log.write('----------------------------------\n\n')
 
-        servidor_tabela = ServerCache("tabela", log, host, port)
+        servidor_tabela = ServerCache("tabela_cache", log, host, port)
         servidor_tabela.aguarda_requisicao()
     except KeyboardInterrupt:
         servidor_tabela.fechar()

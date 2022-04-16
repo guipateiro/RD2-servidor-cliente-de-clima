@@ -4,6 +4,63 @@ Inicio de execucao servidor cache
 
 ----------------------------------
 
-tabela aguardando requisicao
-Conectado por ('127.0.0.1', 37718)
-tabelafinalizado com sucesso
+tabela_cache aguardando requisicao
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+Conectado por ('10.0.2.15', 36706)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+Conectado por ('10.0.2.15', 36712)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+Conectado por ('10.0.2.15', 36720)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+Conectado por ('10.0.2.15', 36728)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+Conectado por ('10.0.2.15', 36738)
+
+tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+----------------------------------
+
+tabela_cache finalizado com sucesso
+
+----------------------------------
+

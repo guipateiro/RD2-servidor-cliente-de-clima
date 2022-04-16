@@ -14,29 +14,32 @@ class Client():
 
     # Metodo responsavel por enviar a requisicao
     def send_request(self):
-        self.log.write('Envia requisicao\n')
+        self.log.write(f'Envia requisicao\n')
         # Envia requisicao
         data = "Hello, world"
         self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
         data = self.socket.recv(1024)
+        if data is not None:
+            self.log.write(f'resposta recebida\n\n')
         tabela = json.loads(data)
         return tabela
 
     # Metodo responsavel por enviar a requisicao
     def send_request_raw(self):
-
+        self.log.write(f'Envia requisicao\n')
         # Envia requisicao
         data = "Hello, world"
         self.socket.sendall(data.encode())
         # Aguarda recebimento dos dados
-        data = self.socket.recv(1024)
+        data = self.socket.recv(1024)  
+        if data is not None:
+            self.log.write(f'resposta recebida\n\n')      
         return data.decode()    
 
     def fechar(self):
             self.socket.shutdown(socket.SHUT_RDWR)
             self.socket.close()
-            self.log.write('cliente finalizado\n')
 
 if __name__ == '__main__':
 
@@ -59,6 +62,7 @@ if __name__ == '__main__':
 
             if (palavra == "get") or (palavra == "connect") or (palavra == "cache"):
                 try:
+                    log.write(f"comando {palavra} recebido\n")
                     client = Client(log, host, port)
                     tabela = client.send_request()
                     print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
@@ -68,11 +72,12 @@ if __name__ == '__main__':
                         i = i + 1   
                 except:
                     print("erro ao receber pacote ou se conectar com " + host + ":" + str(port))
-                    sys.exit(1)
+                    log.write(f"erro ao receber pacote\n\n")
 
                 palavra = input('>>') 
 
             elif (palavra == "tabela") or (palavra == "imprime") or (palavra == "print"):
+                log.write(f"comando {palavra} recebido\n\n")
                 print("{:<8} {:<15} {:<10}".format('n','servidor','temperatura'))   
                 i = 1 
                 for x in tabela:
@@ -81,12 +86,14 @@ if __name__ == '__main__':
                 palavra = input('>>') 
 
             elif (palavra == "info") or (palavra == "creditos"):
+                log.write(f"comando {palavra} recebido\n\n")
                 print("creditos:")
                 print("Cristiano C. Mendieta GRR20190394")
                 print("Guilherme C. Pateiro  GRR90197152")
                 palavra = input('>>') 
 
             elif (palavra == "ajuda") or (palavra == "help"):
+                log.write(f"comando {palavra} recebido\n\n")
                 print("comandos:")
                 print("----------------------------------------------------------------------------------------------")
                 print("{:<30} {:<15}".format("get, connect, cache","faz um pedido para o servidor e imprime a tabela recebida"))
@@ -97,6 +104,7 @@ if __name__ == '__main__':
                 print("----------------------------------------------------------------------------------------------")
                 palavra = input('>>')  
             else:
+                log.write(f"comando desconhecido recebido\n\n")
                 print("comando desconhecido 'ajuda' para lista de comandos")
                 palavra = input('>>')
         try:        
@@ -109,4 +117,7 @@ if __name__ == '__main__':
         except:
             pass
         finally:       
-            print("finalizado com sucesso")                                
+            print("finalizado com sucesso")   
+    log.write('----------------------------------\n\n')
+    log.write(f"fim da execucao do cliente\n\n")
+    log.write('----------------------------------\n\n')                                     
