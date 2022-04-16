@@ -73,7 +73,9 @@ if __name__ == '__main__':
                 palavra = input('>>') 
 
             elif (palavra == "info") or (palavra == "creditos"):
-                print("os creditos ficam aqui :)")
+                print("creditos:")
+                print("Cristiano C. Mendieta GRR20190394")
+                print("Guilherme C. Pateiro  GRR90197152")
                 palavra = input('>>') 
 
             elif (palavra == "ajuda") or (palavra == "help"):

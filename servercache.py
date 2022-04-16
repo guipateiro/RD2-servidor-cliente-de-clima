@@ -19,7 +19,6 @@ class Server():
     def wait_request(self):
         print(self.server)
         # Indica ao SO que eh o servidor
-        tempo = Tempo()
         cache = Cache()
         cache.inicia(host)         
         while True:
