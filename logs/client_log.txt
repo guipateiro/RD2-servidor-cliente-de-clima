@@ -4,40 +4,34 @@ Inicio de execucao cliente
 
 ----------------------------------
 
+comando help recebido
+
+comando desconhecido recebido
+
+comando get recebido
+Envia requisicao
+resposta recebida
+
+comando tabela recebido
+
+comando help recebido
+
+comando get recebido
+Envia requisicao
+resposta recebida
+
+comando get recebido
+Envia requisicao
+resposta recebida
+
+comando get recebido
+Envia requisicao
+resposta recebida
+
+comando tabela recebido
+
 comando get recebido
 erro ao receber pacote
 
 comando tabela recebido
-
-comando help recebido
-
-comando get recebido
-Envia requisicao
-resposta recebida
-
-comando connect recebido
-Envia requisicao
-resposta recebida
-
-comando help recebido
-
-comando cache recebido
-Envia requisicao
-resposta recebida
-
-comando tabela recebido
-
-comando get recebido
-Envia requisicao
-resposta recebida
-
-comando tabela recebido
-
-comando info recebido
-
-comando help recebido
-
-comando get recebido
-Envia requisicao
-resposta recebida
 

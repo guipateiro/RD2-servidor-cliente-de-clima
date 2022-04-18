@@ -6,8 +6,8 @@ Inicio de execucao servidor groelandia
 
 groelandia aguardando requisicao...
 
-Connected by ('10.0.2.15', 46148)
--2°C
+Connected by ('10.0.2.15', 40756)
+-7°C
 ----------------------------------
 
 groelandia finalizado com sucesso

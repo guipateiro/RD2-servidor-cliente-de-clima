@@ -10,30 +10,12 @@ tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servido
 erro no recebimento da requisicao
 
 tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
-Envia requisicao
-resposta recebida
-
-tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
-erro no recebimento da requisicao
-
-Conectado por ('10.0.2.15', 36706)
-
-tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
 erro no recebimento da requisicao
 
 tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
 erro no recebimento da requisicao
 
-Conectado por ('10.0.2.15', 36712)
-
-tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
-erro no recebimento da requisicao
-
-tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
-Envia requisicao
-resposta recebida
-
-Conectado por ('10.0.2.15', 36720)
+Conectado por ('10.0.2.15', 58796)
 
 tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
 erro no recebimento da requisicao
@@ -42,19 +24,41 @@ tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
 Envia requisicao
 resposta recebida
 
-Conectado por ('10.0.2.15', 36728)
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+Conectado por ('10.0.2.15', 58812)
 
 tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
 Envia requisicao
 resposta recebida
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
+
+Conectado por ('10.0.2.15', 58822)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+erro no recebimento da requisicao
 
 tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
 Envia requisicao
 resposta recebida
 
-Conectado por ('10.0.2.15', 36738)
+Conectado por ('10.0.2.15', 58830)
+
+tempo de 'groelandia' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
 
 tempo de 'dubai' vencido, iniciando requisicao de novos dados com o servidor:
+Envia requisicao
+resposta recebida
+
+tempo de 'antartida' vencido, iniciando requisicao de novos dados com o servidor:
 Envia requisicao
 resposta recebida
 

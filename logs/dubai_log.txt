@@ -6,12 +6,12 @@ Inicio de execucao servidor dubai
 
 dubai aguardando requisicao...
 
-Connected by ('10.0.2.15', 55422)
-28°C
-Connected by ('10.0.2.15', 55446)
-28°C
-Connected by ('10.0.2.15', 55462)
-28°C
+Connected by ('10.0.2.15', 59420)
+26°C
+Connected by ('10.0.2.15', 59436)
+26°C
+Connected by ('10.0.2.15', 59456)
+26°C
 ----------------------------------
 
 dubai finalizado com sucesso
