@@ -4,4 +4,4 @@
 
 ## Integrantes
     Cristiano C. Mendieta GRR20190394
-    Guilherme Pateiro
+    Guilherme C. Pateiro GRR20197152
